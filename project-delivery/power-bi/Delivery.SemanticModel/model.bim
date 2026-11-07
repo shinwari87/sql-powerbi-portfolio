@@ -1,0 +1,102 @@
+{
+  "name": "Delivery",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "tables": [
+      {
+        "name": "Portfolio",
+        "columns": [
+          {
+            "name": "project_id",
+            "dataType": "string",
+            "sourceColumn": "project_id"
+          },
+          {
+            "name": "project",
+            "dataType": "string",
+            "sourceColumn": "project"
+          },
+          {
+            "name": "program",
+            "dataType": "string",
+            "sourceColumn": "program"
+          },
+          {
+            "name": "budget_usd",
+            "dataType": "int64",
+            "sourceColumn": "budget_usd"
+          },
+          {
+            "name": "spend_usd",
+            "dataType": "int64",
+            "sourceColumn": "spend_usd"
+          },
+          {
+            "name": "variance_usd",
+            "dataType": "int64",
+            "sourceColumn": "variance_usd"
+          },
+          {
+            "name": "milestones",
+            "dataType": "int64",
+            "sourceColumn": "milestones"
+          },
+          {
+            "name": "completed",
+            "dataType": "int64",
+            "sourceColumn": "completed"
+          },
+          {
+            "name": "overdue",
+            "dataType": "int64",
+            "sourceColumn": "overdue"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Portfolio",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "#table(type table [project_id = text, project = text, program = text, budget_usd = Int64.Type, spend_usd = Int64.Type, variance_usd = Int64.Type, milestones = Int64.Type, completed = Int64.Type, overdue = Int64.Type], {{\"P01\", \"Harbor Signal Upgrade\", \"Transit\", 480000, 492000, 12000, 4, 2, 1}, {\"P02\", \"Northline Monitoring\", \"Utilities\", 315000, 268000, -47000, 4, 3, 0}, {\"P03\", \"Cedar Intake Retrofit\", \"Utilities\", 760000, 806500, 46500, 4, 2, 1}, {\"P04\", \"Station Access Study\", \"Transit\", 192000, 103000, -89000, 4, 2, 1}, {\"P05\", \"Field Systems Migration\", \"Technology\", 420000, 392500, -27500, 4, 3, 0}, {\"P06\", \"Service Desk Rollout\", \"Technology\", 265000, 228000, -37000, 4, 3, 0}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Approved budget",
+            "expression": "SUM(Portfolio[budget_usd])",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Recorded spend",
+            "expression": "SUM(Portfolio[spend_usd])",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Cost variance",
+            "expression": "[Recorded spend] - [Approved budget]",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Budget consumed",
+            "expression": "DIVIDE([Recorded spend], [Approved budget])",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Overdue milestones",
+            "expression": "SUM(Portfolio[overdue])",
+            "formatString": "0"
+          },
+          {
+            "name": "Completion rate",
+            "expression": "DIVIDE(SUM(Portfolio[completed]), SUM(Portfolio[milestones]))",
+            "formatString": "0.0%"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+project_id,project,program,budget_usd,spend_usd,variance_usd,milestones,completed,overdue
+P01,Harbor Signal Upgrade,Transit,480000,492000,12000,4,2,1
+P02,Northline Monitoring,Utilities,315000,268000,-47000,4,3,0
+P03,Cedar Intake Retrofit,Utilities,760000,806500,46500,4,2,1
+P04,Station Access Study,Transit,192000,103000,-89000,4,2,1
+P05,Field Systems Migration,Technology,420000,392500,-27500,4,3,0
+P06,Service Desk Rollout,Technology,265000,228000,-37000,4,3,0

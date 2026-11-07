@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "programslicer",
+  "position": {
+    "x": 20,
+    "y": 150,
+    "width": 240,
+    "height": 238,
+    "z": 3,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "program"
+                }
+              },
+              "queryRef": "Portfolio.program",
+              "nativeQueryRef": "program"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

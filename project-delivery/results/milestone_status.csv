@@ -1,0 +1,25 @@
+milestone_id,project_id,milestone,due_on,completed_on,as_of,status_at_cutoff
+M11,P01,Scope approval,2026-07-08,2026-07-08,2026-09-30,Complete
+M12,P01,Design review,2026-08-10,2026-08-10,2026-09-30,Complete
+M13,P01,Readiness review,2026-09-10,,2026-09-30,Overdue
+M14,P01,Handover,2026-10-06,,2026-09-30,Upcoming
+M21,P02,Scope approval,2026-07-08,2026-07-10,2026-09-30,Complete
+M22,P02,Design review,2026-08-10,2026-08-12,2026-09-30,Complete
+M23,P02,Readiness review,2026-09-10,2026-09-10,2026-09-30,Complete
+M24,P02,Handover,2026-10-06,,2026-09-30,Upcoming
+M31,P03,Scope approval,2026-07-08,2026-07-08,2026-09-30,Complete
+M32,P03,Design review,2026-08-10,2026-08-14,2026-09-30,Complete
+M33,P03,Readiness review,2026-09-10,,2026-09-30,Overdue
+M34,P03,Handover,2026-10-06,,2026-09-30,Upcoming
+M41,P04,Scope approval,2026-07-08,2026-07-12,2026-09-30,Complete
+M42,P04,Design review,2026-08-10,2026-08-08,2026-09-30,Complete
+M43,P04,Readiness review,2026-09-10,,2026-09-30,Overdue
+M44,P04,Handover,2026-10-06,,2026-09-30,Upcoming
+M51,P05,Scope approval,2026-07-08,2026-07-08,2026-09-30,Complete
+M52,P05,Design review,2026-08-10,2026-08-10,2026-09-30,Complete
+M53,P05,Readiness review,2026-09-10,2026-09-14,2026-09-30,Complete
+M54,P05,Handover,2026-10-06,,2026-09-30,Upcoming
+M61,P06,Scope approval,2026-07-08,2026-07-07,2026-09-30,Complete
+M62,P06,Design review,2026-08-10,2026-08-15,2026-09-30,Complete
+M63,P06,Readiness review,2026-09-10,2026-09-09,2026-09-30,Complete
+M64,P06,Handover,2026-10-06,2026-10-03,2026-09-30,Upcoming

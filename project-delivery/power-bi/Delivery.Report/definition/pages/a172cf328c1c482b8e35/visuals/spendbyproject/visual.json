@@ -1,0 +1,69 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "spendbyproject",
+  "position": {
+    "x": 274,
+    "y": 150,
+    "width": 970,
+    "height": 238,
+    "z": 4,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "project"
+                }
+              },
+              "queryRef": "Portfolio.project",
+              "nativeQueryRef": "project"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Approved budget"
+                }
+              },
+              "queryRef": "Portfolio.Approved budget",
+              "nativeQueryRef": "Approved budget"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Recorded spend"
+                }
+              },
+              "queryRef": "Portfolio.Recorded spend",
+              "nativeQueryRef": "Recorded spend"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+milestone_id,project_id,milestone,due_on,completed_on
+M11,P01,Scope approval,2026-07-08,2026-07-08
+M12,P01,Design review,2026-08-10,2026-08-10
+M13,P01,Readiness review,2026-09-10,
+M14,P01,Handover,2026-10-06,
+M21,P02,Scope approval,2026-07-08,2026-07-10
+M22,P02,Design review,2026-08-10,2026-08-12
+M23,P02,Readiness review,2026-09-10,2026-09-10
+M24,P02,Handover,2026-10-06,
+M31,P03,Scope approval,2026-07-08,2026-07-08
+M32,P03,Design review,2026-08-10,2026-08-14
+M33,P03,Readiness review,2026-09-10,
+M34,P03,Handover,2026-10-06,
+M41,P04,Scope approval,2026-07-08,2026-07-12
+M42,P04,Design review,2026-08-10,2026-08-08
+M43,P04,Readiness review,2026-09-10,
+M44,P04,Handover,2026-10-06,
+M51,P05,Scope approval,2026-07-08,2026-07-08
+M52,P05,Design review,2026-08-10,2026-08-10
+M53,P05,Readiness review,2026-09-10,2026-09-14
+M54,P05,Handover,2026-10-06,
+M61,P06,Scope approval,2026-07-08,2026-07-07
+M62,P06,Design review,2026-08-10,2026-08-15
+M63,P06,Readiness review,2026-09-10,2026-09-09
+M64,P06,Handover,2026-10-06,2026-10-03

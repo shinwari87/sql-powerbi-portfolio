@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "details",
+  "position": {
+    "x": 20,
+    "y": 410,
+    "width": 1224,
+    "height": 282,
+    "z": 5,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "project"
+                }
+              },
+              "queryRef": "Portfolio.project",
+              "nativeQueryRef": "project"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Cost variance"
+                }
+              },
+              "queryRef": "Portfolio.Cost variance",
+              "nativeQueryRef": "Cost variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Budget consumed"
+                }
+              },
+              "queryRef": "Portfolio.Budget consumed",
+              "nativeQueryRef": "Budget consumed"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Overdue milestones"
+                }
+              },
+              "queryRef": "Portfolio.Overdue milestones",
+              "nativeQueryRef": "Overdue milestones"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Portfolio"
+                    }
+                  },
+                  "Property": "Completion rate"
+                }
+              },
+              "queryRef": "Portfolio.Completion rate",
+              "nativeQueryRef": "Completion rate"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

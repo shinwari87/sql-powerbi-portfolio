@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}} | Nasratullah Shinwari</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f3ec;color:#172c29;font:15px/1.45 "Segoe UI",Arial,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:35px 34px 28px}header{border-top:5px solid #173c35;padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #aebbb2}
+h1,h2,p{margin:0}h1{font:600 clamp(32px,5vw,56px)/1.08 Georgia,serif;letter-spacing:-1.7px}h2{font:600 23px/1.15 Georgia,serif}header p,footer{color:#4a5b54}header p{margin-top:8px}
+label{font-size:12px;font-weight:700}select{display:block;background:white;border:1px solid #8e9e94;border-radius:5px;padding:8px 34px 8px 10px;color:#183b31;font-size:14px;margin-top:4px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}article{padding:18px;background:#173c35;color:#fbf8ec;border-radius:6px}article b{font:600 34px/1.2 Georgia,serif;display:block;margin-top:6px}article span{color:#d1e3d3;font-size:13px}.panel{padding:20px;background:#fffefa;border:1px solid #d4d9ce;border-radius:6px;margin:13px 0}
+.chart{margin-top:12px}.barrow{display:grid;grid-template-columns:minmax(125px,1fr) minmax(70px,3fr) 100px;align-items:center;gap:14px;margin:8px 0}.track{height:9px;background:#e8e9df;border-radius:5px}.bar{height:100%;background:#36745c;border-radius:5px}.bad{background:#a34c34}.value{text-align:right;font-variant-numeric:tabular-nums}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px;border-bottom:1px solid #e1e1d6;text-align:right;font-variant-numeric:tabular-nums}th:first-child,td:first-child{text-align:left}th{color:#556258;font-size:12px}footer{font-size:12px;margin-top:14px}.scroll{overflow-x:auto}small{color:#56635b}noscript{display:block;background:#fff;padding:16px}
+@media(max-width:640px){main{padding:16px}header{display:block}label{display:block;margin-top:15px}.cards{gap:6px}.cards article{padding:10px}.cards article b{font-size:21px}.barrow{grid-template-columns:115px 1fr 73px;gap:6px;font-size:12px}.panel{padding:12px}}
+</style>
+<main><header><div><h1>{{TITLE}}</h1><p>{{SUBTITLE}}</p></div><label>{{CHOICE}}<select id="filter"></select></label></header>
+<noscript>Enable JavaScript to use the dashboard. The same results are available in the results folder.</noscript>
+<section id="cards" class="cards" aria-label="Key metrics" aria-live="polite"></section>
+<section class="panel"><h2 id="chartTitle"></h2><small id="chartNote"></small><div id="chart" class="chart"></div></section>
+<section class="panel"><h2 id="tableTitle"></h2><div class="scroll"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div></section>
+<footer>Nasratullah Shinwari · Portfolio study · Fictional data</footer></main>
+<script id="data" type="application/json">{{DATA}}</script>
+<script>
+const source = JSON.parse(document.getElementById('data').textContent);
+const delivery = source.project === 'project-delivery';
+const filter = document.getElementById('filter');
+const group = delivery ? 'program' : 'month';
+const number = (value) => Number(value);
+const usd = (v,digits=0) => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:digits,minimumFractionDigits:digits}).format(v);
+const sum = (items,key) => items.reduce((total,row) => total + number(row[key]),0);
+const dom = (tag,value) => {const e=document.createElement(tag);e.textContent=value;return e;};
+const byId = id => document.getElementById(id);
+filter.add(new Option(delivery?'All programs':'All months',''));
+[...new Set(source.rows.map(r=>r[group]))].sort().forEach(v=>filter.add(new Option(v,v)));
+function redraw(){
+ const rows=source.rows.filter(r=>!filter.value || r[group]===filter.value);
+ let metrics, bars, columns, table;
+ if(delivery){
+   metrics=[['Portfolio budget',usd(sum(rows,'budget_usd'))],['Spend to date',usd(sum(rows,'spend_usd'))],['Open overdue milestones',sum(rows,'overdue')]];
+   bars=rows.map(r=>[r.project,number(r.spend_usd)/number(r.budget_usd),number(r.variance_usd)>0]);
+   byId('chartTitle').textContent='Budget consumed by project';byId('chartNote').textContent='Above 100% means recorded spend exceeded the approved budget.';
+   columns=['Project','Spend','Budget','Over / (under)','Overdue']; table=rows.map(r=>[r.project,usd(r.spend_usd),usd(r.budget_usd),usd(r.variance_usd),r.overdue]);byId('tableTitle').textContent='Project detail';
+ } else{
+   const net=sum(rows,'net_sales'),contribution=sum(rows,'contribution');
+   metrics=[['Net sales',usd(net/100,2)],['Contribution',usd(contribution/100,2)],['Contribution margin',net?(100*contribution/net).toFixed(1)+'%':'—']];
+   const products=new Map();for(const r of rows){if(!products.has(r.sku))products.set(r.sku,{product:r.product,net_sales:0,contribution:0,units:0,refunds:0});const p=products.get(r.sku);for(const k of ['net_sales','contribution','units','refunds'])p[k]+=number(r[k]);}
+   const sorted=[...products.values()].sort((a,b)=>b.contribution-a.contribution);
+   bars=sorted.map(p=>[p.product,p.contribution/100,p.contribution<0]);
+   byId('chartTitle').textContent='Contribution by product';byId('chartNote').textContent='Bars show magnitude. Rust marks a loss after variable costs and advertising.';
+   columns=['Product','Units','Net sales','Refunds','Contribution'];table=sorted.map(p=>[p.product,p.units,usd(p.net_sales/100,2),usd(p.refunds/100,2),usd(p.contribution/100,2)]);byId('tableTitle').textContent='Product detail';
+ }
+ byId('cards').replaceChildren(...metrics.map(([k,v])=>{const e=dom('article','');e.append(dom('span',k),dom('b',v));return e}));
+ const scale=Math.max(1,...bars.map(b=>Math.abs(b[1])));
+ byId('chart').replaceChildren(...bars.map(([name,val,warn])=>{const row=dom('div','');row.className='barrow';const track=dom('div','');track.className='track';const bar=dom('div','');bar.className='bar'+(warn?' bad':'');bar.style.width=(100*Math.abs(val)/scale)+'%';track.append(bar);const v=dom('span',delivery?(100*val).toFixed(1)+'%':usd(val,2));v.className='value';row.append(dom('span',name),track,v);return row;}));
+ const head=dom('tr','');columns.forEach(col=>head.append(dom('th',col)));byId('th').replaceChildren(head);
+ byId('tb').replaceChildren(...table.map(values=>{const row=dom('tr','');values.forEach(value=>row.append(dom('td',value)));return row;}));
+}
+filter.addEventListener('change',redraw);redraw();
+</script></html>

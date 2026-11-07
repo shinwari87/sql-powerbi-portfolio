@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>First-response review | Nasratullah Shinwari</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5fa;color:#1a293d;font:15px/1.55 "Segoe UI",Arial,sans-serif}
+main{max-width:1130px;padding:24px;margin:auto}.mast{background:#17283e;border-radius:9px;color:#fafcff;padding:25px 30px}h1,h2,p{margin:0}h1{font:600 clamp(33px,5vw,52px)/1.05 Georgia,serif}.mast p{margin-top:9px;color:#d1dceb}
+.tools{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:16px 0}.tools label{font-size:12px;color:#42566b;font-weight:700}.tools select,.tools button{display:block;margin-top:4px;padding:8px 12px;border:1px solid #a5b2c1;border-radius:5px;background:white;color:#1a293d;font:inherit}.tools button{font-size:13px;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric,section.panel{border:1px solid #d4dce7;background:#fff;border-radius:7px;padding:16px}.metric strong{display:block;font:600 31px/1.3 Georgia,serif}.metric span,small{color:#4d6075;font-size:13px}h2{font:600 22px Georgia,serif}.panel{margin-top:15px}.panel small{display:block;margin:4px 0 8px}.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}td,th{padding:8px 9px;border-bottom:1px solid #e4e8ee;text-align:right;white-space:nowrap}td:first-child,th:first-child{text-align:left}th{color:#516276;font-size:12px}td{font-size:14px}.track{display:inline-block;vertical-align:middle;width:76px;height:8px;margin-right:8px;border-radius:4px;background:#dde5ed}.bar{display:block;height:100%;border-radius:4px;background:#416c91}footer{margin:16px 0 4px;color:#4d6075;font-size:12px}details summary{cursor:pointer;font-weight:650}details{margin-top:16px}
+@media(max-width:680px){main{padding:12px}.mast{padding:20px}.metrics{grid-template-columns:1fr 1fr}.tools{gap:7px}.metric{padding:12px}.track{display:none}}
+</style><main>
+<header class="mast"><h1>First-response review</h1><p id="cutoff"></p></header>
+<div class="tools"><label>Service queue<select id="queue"><option value="">All queues</option></select></label>
+<label>Priority<select id="priority"><option value="">All priorities</option></select></label><button type="button" id="reset">Reset filters</button></div>
+<noscript>Enable JavaScript for interactive results or open the CSV exports.</noscript>
+<div class="metrics" id="metrics" aria-live="polite"></div>
+<section class="panel"><h2>Queue performance</h2><small>Met rate = on-time replies ÷ evaluated tickets. Pending targets are excluded. P90 uses answered tickets only.</small><div class="scroll"><table><thead><tr><th>Queue</th><th>Tickets</th><th>Met rate</th><th>Missed</th><th>Pending</th><th>P90 reply</th></tr></thead><tbody id="scores"></tbody></table></div></section>
+<section class="panel"><h2>Overdue and still waiting</h2><small>Unanswered tickets past their deadline, longest overdue first. All timestamps are UTC.</small><div class="scroll"><table><thead><tr><th>Ticket</th><th>Queue</th><th>Priority</th><th>Due</th><th>Minutes overdue</th></tr></thead><tbody id="waiting"></tbody></table></div></section>
+<details class="panel"><summary>All tickets in this selection</summary><div class="scroll"><table><thead><tr><th>Ticket</th><th>Queue</th><th>Priority</th><th>Opened</th><th>First human reply</th><th>Target</th><th>Outcome</th></tr></thead><tbody id="detail"></tbody></table></div></details><footer>Nasratullah Shinwari · IT service desk portfolio study · Fictional records</footer></main>
+<script id="source" type="application/json">{{PAYLOAD}}</script>
+<script>
+const source=JSON.parse(document.getElementById('source').textContent);
+const find=id=>document.getElementById(id);
+const element=(tag,value='')=>{const n=document.createElement(tag);n.textContent=value;return n};
+find('cutoff').textContent='Reporting cutoff: '+source.cutoff+' UTC';
+for(const key of ['queue','priority']){
+  const choices=key==='priority'?['Critical','High','Standard']:[...new Set(source.tickets.map(t=>t[key]))].sort();
+  for(const value of choices)find(key).add(new Option(value,value));
+  find(key).addEventListener('change',render);
+}
+function stats(tickets){
+ const met=tickets.filter(t=>t.outcome==='Met').length;
+ const missed=tickets.filter(t=>t.outcome==='Missed').length;
+ const waits=tickets.filter(t=>t.wait_minutes!=='').map(t=>Number(t.wait_minutes)).sort((a,b)=>a-b);
+ const pending=tickets.length-met-missed;
+ const rate=met+missed?100*met/(met+missed):null;
+ const p90=waits.length?waits[Math.ceil(0.9*waits.length)-1]:null;
+ return {met,missed,pending,rate,p90,n:tickets.length};
+}
+function row(values){const tr=element('tr');for(const v of values)tr.append(element('td',v));return tr}
+function empty(message,cols){const tr=row([message]);tr.firstChild.colSpan=cols;return tr}
+function render(){
+ const data=source.tickets.filter(t=>(!find('queue').value||t.queue===find('queue').value)&&(!find('priority').value||t.priority===find('priority').value));
+ const all=stats(data);
+ const waiting=data.filter(t=>t.outcome==='Missed'&&t.first_reply_utc==='').sort((a,b)=>(b.age_minutes-b.target_minutes)-(a.age_minutes-a.target_minutes)||a.ticket_id.localeCompare(b.ticket_id));
+ const percent=rate=>rate===null?'—':rate.toFixed(1)+'%';
+ const minutes=x=>x===null?'—':x+' min';
+ const cards=[['Targets met',percent(all.rate)],['Missed targets',all.missed],['90th percentile reply',minutes(all.p90)],['Overdue unanswered',waiting.length]];
+ find('metrics').replaceChildren(...cards.map(([name,v])=>{const card=element('div');card.className='metric';card.append(element('span',name),element('strong',v));return card}));
+ const groups=[...new Set(data.map(t=>t.queue))].map(q=>({q,...stats(data.filter(t=>t.queue===q))})).sort((a,b)=>(a.rate??101)-(b.rate??101));
+ const rows=groups.map(g=>{const tr=row([g.q,g.n,percent(g.rate),g.missed,g.pending,minutes(g.p90)]);if(g.rate!==null){const track=element('span');track.className='track';const bar=element('span');bar.className='bar';bar.style.width=g.rate+'%';track.append(bar);tr.children[2].prepend(track)}return tr});
+ find('scores').replaceChildren(...(rows.length?rows:[empty('No tickets match these filters.',6)]));
+ find('waiting').replaceChildren(...(waiting.length?waiting.map(t=>row([t.ticket_id,t.queue,t.priority,t.due_utc,Number(t.age_minutes)-Number(t.target_minutes)])):[empty('No unanswered tickets are overdue in this selection.',5)]));
+ find('detail').replaceChildren(...(data.length?data.map(t=>row([t.ticket_id,t.queue,t.priority,t.opened_utc,t.first_reply_utc||'Awaiting reply',minutes(t.target_minutes),t.outcome])):[empty('No tickets match these filters.',7)]));
+}
+find('reset').addEventListener('click',()=>{find('queue').value='';find('priority').value='';render()});
+render();
+</script></html>

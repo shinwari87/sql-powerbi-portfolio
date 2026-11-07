@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "kpi0",
+  "position": {
+    "x": 12,
+    "y": 14,
+    "width": 306,
+    "height": 116,
+    "z": 0,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Target met rate"
+                }
+              },
+              "queryRef": "Tickets.Target met rate",
+              "nativeQueryRef": "Target met rate"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 505" role="img"><title>IT service desk first-response performance by queue</title>
+<rect x="0" y="0" width="1000" height="505" rx="0" fill="#f3f5fa"/>
+<rect x="0" y="0" width="1000" height="105" rx="0" fill="#17283e"/>
+<text x="30" y="49" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">First-response review</text>
+<text x="31" y="79" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#ced8e6">2026-10-31 18:00:00 UTC   /   Fictional service desk data</text>
+<rect x="30" y="125" width="307" height="85" rx="5" fill="#ffffff"/>
+<text x="44" y="151" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">Targets met</text>
+<text x="44" y="191" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#17283e">81.2%</text>
+<rect x="347" y="125" width="307" height="85" rx="5" fill="#ffffff"/>
+<text x="361" y="151" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">Missed targets</text>
+<text x="361" y="191" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#17283e">28</text>
+<rect x="664" y="125" width="307" height="85" rx="5" fill="#ffffff"/>
+<text x="678" y="151" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">90th percentile reply</text>
+<text x="678" y="191" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#17283e">244 min</text>
+<text x="30" y="253" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#202e42">Share of evaluated tickets answered on time</text>
+<text x="30" y="278" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#495a6e">Pending targets are excluded. Bars run from 0 to 100%.</text>
+<text x="32" y="319" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#202e42">Identity</text>
+<rect x="205" y="307" width="470" height="12" rx="4" fill="#dce4ec"/>
+<rect x="205" y="307" width="272.13" height="12" rx="4" fill="#426686"/>
+<text x="710" y="319" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#202e42">57.9%</text>
+<text x="818" y="319" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">16 missed</text>
+<text x="32" y="359" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#202e42">Network</text>
+<rect x="205" y="347" width="470" height="12" rx="4" fill="#dce4ec"/>
+<rect x="205" y="347" width="376.0" height="12" rx="4" fill="#426686"/>
+<text x="710" y="359" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#202e42">80.0%</text>
+<text x="818" y="359" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">7 missed</text>
+<text x="32" y="399" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#202e42">Applications</text>
+<rect x="205" y="387" width="470" height="12" rx="4" fill="#dce4ec"/>
+<rect x="205" y="387" width="430.99" height="12" rx="4" fill="#426686"/>
+<text x="710" y="399" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#202e42">91.7%</text>
+<text x="818" y="399" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">3 missed</text>
+<text x="32" y="439" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#202e42">Devices</text>
+<rect x="205" y="427" width="470" height="12" rx="4" fill="#dce4ec"/>
+<rect x="205" y="427" width="446.5" height="12" rx="4" fill="#426686"/>
+<text x="710" y="439" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#202e42">95.0%</text>
+<text x="818" y="439" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#495a6e">2 missed</text>
+<text x="30" y="480" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#495a6e">Nasratullah Shinwari  /  SQL and Power BI</text>
+</svg>

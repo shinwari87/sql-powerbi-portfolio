@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "tickets",
+  "position": {
+    "x": 12,
+    "y": 153,
+    "width": 1252,
+    "height": 530,
+    "z": 3,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "ticket_id"
+                }
+              },
+              "queryRef": "Tickets.ticket_id",
+              "nativeQueryRef": "ticket_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "queue"
+                }
+              },
+              "queryRef": "Tickets.queue",
+              "nativeQueryRef": "queue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "priority"
+                }
+              },
+              "queryRef": "Tickets.priority",
+              "nativeQueryRef": "priority"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "opened_utc"
+                }
+              },
+              "queryRef": "Tickets.opened_utc",
+              "nativeQueryRef": "opened_utc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "due_utc"
+                }
+              },
+              "queryRef": "Tickets.due_utc",
+              "nativeQueryRef": "due_utc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "first_reply_utc"
+                }
+              },
+              "queryRef": "Tickets.first_reply_utc",
+              "nativeQueryRef": "first_reply_utc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "outcome"
+                }
+              },
+              "queryRef": "Tickets.outcome",
+              "nativeQueryRef": "outcome"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

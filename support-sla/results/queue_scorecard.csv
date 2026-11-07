@@ -1,0 +1,5 @@
+queue,tickets,met,missed,pending,met_pct,overdue_unanswered,p90_minutes
+Applications,37,33,3,1,91.7,0,240
+Devices,41,38,2,1,95.0,1,209
+Identity,39,22,16,1,57.9,2,334
+Network,35,28,7,0,80.0,1,229

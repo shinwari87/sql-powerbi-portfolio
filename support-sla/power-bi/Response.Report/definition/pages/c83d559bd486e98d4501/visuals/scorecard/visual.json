@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "scorecard",
+  "position": {
+    "x": 12,
+    "y": 410,
+    "width": 1248,
+    "height": 280,
+    "z": 6,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "queue"
+                }
+              },
+              "queryRef": "Tickets.queue",
+              "nativeQueryRef": "queue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Ticket count"
+                }
+              },
+              "queryRef": "Tickets.Ticket count",
+              "nativeQueryRef": "Ticket count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Evaluated tickets"
+                }
+              },
+              "queryRef": "Tickets.Evaluated tickets",
+              "nativeQueryRef": "Evaluated tickets"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Met targets"
+                }
+              },
+              "queryRef": "Tickets.Met targets",
+              "nativeQueryRef": "Met targets"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Missed targets"
+                }
+              },
+              "queryRef": "Tickets.Missed targets",
+              "nativeQueryRef": "Missed targets"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Target met rate"
+                }
+              },
+              "queryRef": "Tickets.Target met rate",
+              "nativeQueryRef": "Target met rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "P90 reply minutes"
+                }
+              },
+              "queryRef": "Tickets.P90 reply minutes",
+              "nativeQueryRef": "P90 reply minutes"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

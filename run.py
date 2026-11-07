@@ -1,10 +1,14 @@
-"""Rebuild both portfolio analyses with the Python standard library."""
+"""Rebuild the portfolio analyses with the Python standard library."""
 from pathlib import Path
 import csv
 import sqlite3
 
 ROOT = Path(__file__).resolve().parent
 PROJECTS = {
+    "support-sla": (
+        ["response_targets", "snapshot", "tickets", "events"],
+        {"ticket_outcomes": "ticket_id", "queue_scorecard": "queue"}
+    ),
     "project-delivery": (
         ["projects", "report_settings", "costs", "milestones"],
         {"portfolio": "project_id", "milestone_status": "project_id, due_on"}

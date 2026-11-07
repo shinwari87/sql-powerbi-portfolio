@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "kpi2",
+  "position": {
+    "x": 642,
+    "y": 14,
+    "width": 306,
+    "height": 116,
+    "z": 2,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "P90 reply minutes"
+                }
+              },
+              "queryRef": "Tickets.P90 reply minutes",
+              "nativeQueryRef": "P90 reply minutes"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

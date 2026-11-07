@@ -43,14 +43,14 @@ def embed_table():
             "partitions":[{"name":"Portfolio","mode":"import","source":{"type":"m","expression":expression}}],
             "measures":[{"name":k,"expression":v[0],"formatString":v[1]} for k,v in MEASURES.items()]}
 
-def visual(page, name, kind, rect, roles, order):
+def visual(page, name, kind, rect, roles, order, *, table="Portfolio", measures=MEASURES):
     state = {}
     for role, fields in roles.items():
         projections = []
         for field in fields:
-            entity = "Measure" if field in MEASURES else "Column"
-            projections.append({"field":{entity:{"Expression":{"SourceRef":{"Entity":"Portfolio"}},"Property":field}},
-                                "queryRef":"Portfolio."+field,"nativeQueryRef":field})
+            entity = "Measure" if field in measures else "Column"
+            projections.append({"field":{entity:{"Expression":{"SourceRef":{"Entity":table}},"Property":field}},
+                                "queryRef":table+"."+field,"nativeQueryRef":field})
         state[role]={"projections":projections}
     pbir(page / "visuals" / name / "visual.json","visualContainer",name=name,
          position=dict(zip(("x","y","width","height","z","tabOrder"),(*rect,order,order))),

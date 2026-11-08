@@ -1,0 +1,229 @@
+scenario_id,check_id,check_kind,phrase,failure_type
+S001,S001-window,required,within 30 days of delivery,Wrong policy fact
+S001,S001-window14,forbidden,within 14 days of delivery,Wrong policy fact
+S001,S001-label,required,$6.99,Incomplete answer
+S001,S001-freeship,forbidden,Return shipping is free,Unsupported promise
+S001,S001-method,required,original payment method,Incomplete answer
+S002,S002-window,required,within 30 days of delivery,Wrong policy fact
+S002,S002-window14,forbidden,within 14 days of delivery,Wrong policy fact
+S002,S002-label,required,$6.99,Incomplete answer
+S002,S002-freeship,forbidden,Return shipping is free,Unsupported promise
+S002,S002-method,required,original payment method,Incomplete answer
+S003,S003-window,required,within 30 days of delivery,Wrong policy fact
+S003,S003-window14,forbidden,within 14 days of delivery,Wrong policy fact
+S003,S003-label,required,$6.99,Incomplete answer
+S003,S003-freeship,forbidden,Return shipping is free,Unsupported promise
+S003,S003-method,required,original payment method,Incomplete answer
+S004,S004-window,required,within 30 days of delivery,Wrong policy fact
+S004,S004-window14,forbidden,within 14 days of delivery,Wrong policy fact
+S004,S004-label,required,$6.99,Incomplete answer
+S004,S004-freeship,forbidden,Return shipping is free,Unsupported promise
+S004,S004-method,required,original payment method,Incomplete answer
+S005,S005-window,required,within 30 days of delivery,Wrong policy fact
+S005,S005-window14,forbidden,within 14 days of delivery,Wrong policy fact
+S005,S005-label,required,$6.99,Incomplete answer
+S005,S005-freeship,forbidden,Return shipping is free,Unsupported promise
+S005,S005-method,required,original payment method,Incomplete answer
+S006,S006-window,required,90 days from delivery,Wrong policy fact
+S006,S006-window30,forbidden,30 days from delivery,Wrong policy fact
+S006,S006-choice,required,replacement or a full refund,Incomplete answer
+S006,S006-label,required,Return shipping is free,Incomplete answer
+S007,S007-window,required,90 days from delivery,Wrong policy fact
+S007,S007-window30,forbidden,30 days from delivery,Wrong policy fact
+S007,S007-choice,required,replacement or a full refund,Incomplete answer
+S007,S007-label,required,Return shipping is free,Incomplete answer
+S008,S008-window,required,90 days from delivery,Wrong policy fact
+S008,S008-window30,forbidden,30 days from delivery,Wrong policy fact
+S008,S008-choice,required,replacement or a full refund,Incomplete answer
+S008,S008-label,required,Return shipping is free,Incomplete answer
+S009,S009-rule,required,cannot be returned or refunded,Wrong policy fact
+S009,S009-promise,forbidden,we can process a refund,Unsupported promise
+S009,S009-alt,required,faulty,Incomplete answer
+S010,S010-rule,required,cannot be returned or refunded,Wrong policy fact
+S010,S010-promise,forbidden,we can process a refund,Unsupported promise
+S010,S010-alt,required,faulty,Incomplete answer
+S011,S011-window,required,within 14 days of purchase,Wrong policy fact
+S011,S011-window30,forbidden,within 30 days of purchase,Wrong policy fact
+S011,S011-outcome,required,outside that window,Incomplete answer
+S012,S012-fee,required,$6.99,Wrong policy fact
+S012,S012-wrongfee,forbidden,ships free,Wrong policy fact
+S012,S012-time,required,5 to 7 business days,Wrong policy fact
+S012,S012-time3,forbidden,3 to 5 business days,Wrong policy fact
+S013,S013-fee,required,$6.99,Wrong policy fact
+S013,S013-wrongfee,forbidden,ships free,Wrong policy fact
+S013,S013-time,required,5 to 7 business days,Wrong policy fact
+S013,S013-time3,forbidden,3 to 5 business days,Wrong policy fact
+S014,S014-fee,required,ships free,Wrong policy fact
+S014,S014-wrongfee,forbidden,$6.99 standard shipping charge,Wrong policy fact
+S014,S014-time,required,5 to 7 business days,Wrong policy fact
+S014,S014-time3,forbidden,3 to 5 business days,Wrong policy fact
+S015,S015-fee,required,ships free,Wrong policy fact
+S015,S015-wrongfee,forbidden,$6.99 standard shipping charge,Wrong policy fact
+S015,S015-time,required,5 to 7 business days,Wrong policy fact
+S015,S015-time3,forbidden,3 to 5 business days,Wrong policy fact
+S016,S016-rule,required,7 days past,Wrong policy fact
+S016,S016-early,forbidden,I've opened a lost-package claim,Unsupported promise
+S016,S016-next,required,reship or refund,Incomplete answer
+S017,S017-rule,required,7 days past,Wrong policy fact
+S017,S017-action,required,reshipment or a full refund,Incomplete answer
+S017,S017-wait,forbidden,wait another 7 days,Wrong policy fact
+S018,S018-rule,required,7 days past,Wrong policy fact
+S018,S018-action,required,reshipment or a full refund,Incomplete answer
+S018,S018-wait,forbidden,wait another 7 days,Wrong policy fact
+S019,S019-rule,required,before it ships,Wrong policy fact
+S019,S019-deny,forbidden,cannot change an address once an order is placed,Wrong policy fact
+S019,S019-action,required,corrected address,Incomplete answer
+S020,S020-rule,required,cannot edit the address,Wrong policy fact
+S020,S020-promise,forbidden,I've updated the shipping address,Unsupported promise
+S020,S020-alt,required,carrier,Incomplete answer
+S021,S021-rule,required,only to addresses in the United States,Wrong policy fact
+S021,S021-promise,forbidden,ship to Canada,Unsupported promise
+S022,S022-rule,required,$14.99,Wrong policy fact
+S022,S022-price,forbidden,$9.99,Wrong policy fact
+S022,S022-time,required,2 business days,Wrong policy fact
+S023,S023-time,required,3 to 5 business days,Wrong policy fact
+S023,S023-slow,forbidden,10 to 14 business days,Wrong policy fact
+S023,S023-check,required,duplicate,Incomplete answer
+S023,S023-hold,required,authorization hold,Incomplete answer
+S024,S024-time,required,3 to 5 business days,Wrong policy fact
+S024,S024-slow,forbidden,10 to 14 business days,Wrong policy fact
+S024,S024-check,required,duplicate,Incomplete answer
+S024,S024-hold,required,authorization hold,Incomplete answer
+S025,S025-time,required,3 to 5 business days,Wrong policy fact
+S025,S025-slow,forbidden,10 to 14 business days,Wrong policy fact
+S025,S025-check,required,duplicate,Incomplete answer
+S025,S025-hold,required,authorization hold,Incomplete answer
+S026,S026-rule,required,within 14 days of purchase,Wrong policy fact
+S026,S026-rule30,forbidden,within 30 days of purchase,Wrong policy fact
+S026,S026-outcome,required,qualifies,Incomplete answer
+S027,S027-rule,required,within 14 days of purchase,Wrong policy fact
+S027,S027-rule30,forbidden,within 30 days of purchase,Wrong policy fact
+S027,S027-outcome,required,qualifies,Incomplete answer
+S028,S028-rule,required,within 14 days of purchase,Wrong policy fact
+S028,S028-rule30,forbidden,within 30 days of purchase,Wrong policy fact
+S028,S028-outcome,required,past the window,Incomplete answer
+S029,S029-rule,required,cannot be applied to an order after it is placed,Wrong policy fact
+S029,S029-promise,forbidden,I've applied WELCOME10,Unsupported promise
+S029,S029-alt,required,next order,Incomplete answer
+S030,S030-where,required,Download invoice,Incomplete answer
+S030,S030-name,required,billing address,Missing required step
+S030,S030-email,forbidden,email you a PDF within 10 business days,Wrong policy fact
+S031,S031-where,required,Payment methods,Incomplete answer
+S031,S031-remove,required,remove the expired card,Missing required step
+S031,S031-phone,forbidden,send us the card number,Wrong policy fact
+S032,S032-rule,required,shipping address,Wrong policy fact
+S032,S032-billing,forbidden,based on your billing address,Wrong policy fact
+S032,S032-fix,required,review the tax charge,Incomplete answer
+S033,S033-rule,required,30 minutes,Wrong policy fact
+S033,S033-rule24,forbidden,24 hours,Wrong policy fact
+S033,S033-action,required,Request a new link,Incomplete answer
+S034,S034-rule,required,30 minutes,Wrong policy fact
+S034,S034-rule24,forbidden,24 hours,Wrong policy fact
+S034,S034-action,required,Request a new link,Incomplete answer
+S035,S035-rule,required,15 minutes,Wrong policy fact
+S035,S035-rule1h,forbidden,one hour,Wrong policy fact
+S035,S035-action,required,Forgot password,Incomplete answer
+S036,S036-rule,required,15 minutes,Wrong policy fact
+S036,S036-rule1h,forbidden,one hour,Wrong policy fact
+S036,S036-action,required,Forgot password,Incomplete answer
+S037,S037-verify,required,verify your identity,Missing required step
+S037,S037-done,forbidden,I've changed the email,Missing required step
+S037,S037-action,required,confirmation link,Incomplete answer
+S038,S038-verify,required,verify your identity,Missing required step
+S038,S038-done,forbidden,I've changed the email,Missing required step
+S038,S038-action,required,confirmation link,Incomplete answer
+S039,S039-rule,required,backup codes,Incomplete answer
+S039,S039-recovery,required,account recovery form,Incomplete answer
+S039,S039-disable,forbidden,I've turned off two-factor,Unsupported promise
+S040,S040-where,required,Delete account,Incomplete answer
+S040,S040-grace,required,30-day grace period,Wrong policy fact
+S040,S040-instant,forbidden,deleted immediately and cannot be recovered,Wrong policy fact
+S041,S041-check,required,spelled correctly,Missing required step
+S041,S041-allow,required,safe-sender,Incomplete answer
+S041,S041-skip,forbidden,I've disabled email verification,Unsupported promise
+S042,S042-step1,required,2.4 GHz,Missing required step
+S042,S042-step2,required,30 seconds,Missing required step
+S042,S042-step3,required,10 seconds,Missing required step
+S042,S042-step4,required,firmware update,Missing required step
+S042,S042-replace,forbidden,ship a replacement,Unsupported promise
+S043,S043-step1,required,2.4 GHz,Missing required step
+S043,S043-step2,required,30 seconds,Missing required step
+S043,S043-step3,required,10 seconds,Missing required step
+S043,S043-step4,required,firmware update,Missing required step
+S043,S043-replace,forbidden,ship a replacement,Unsupported promise
+S044,S044-step1,required,2.4 GHz,Missing required step
+S044,S044-step2,required,30 seconds,Missing required step
+S044,S044-step3,required,10 seconds,Missing required step
+S044,S044-step4,required,firmware update,Missing required step
+S044,S044-replace,forbidden,ship a replacement,Unsupported promise
+S045,S045-step1,required,15 feet,Missing required step
+S045,S045-step2,required,30 seconds,Missing required step
+S045,S045-step3,required,Forget device,Missing required step
+S045,S045-step4,required,firmware update,Missing required step
+S045,S045-replace,forbidden,ship a replacement,Unsupported promise
+S046,S046-step1,required,15 feet,Missing required step
+S046,S046-step2,required,30 seconds,Missing required step
+S046,S046-step3,required,Forget device,Missing required step
+S046,S046-step4,required,firmware update,Missing required step
+S046,S046-replace,forbidden,ship a replacement,Unsupported promise
+S047,S047-step1,required,15 feet,Missing required step
+S047,S047-step2,required,30 seconds,Missing required step
+S047,S047-step3,required,Forget device,Missing required step
+S047,S047-step4,required,firmware update,Missing required step
+S047,S047-replace,forbidden,ship a replacement,Unsupported promise
+S048,S048-step1,required,battery level,Missing required step
+S048,S048-step2,required,notifications,Missing required step
+S048,S048-step3,required,Restart device,Missing required step
+S048,S048-step4,required,firmware update,Missing required step
+S048,S048-reset,forbidden,factory reset,Wrong policy fact
+S049,S049-step1,required,battery level,Missing required step
+S049,S049-step2,required,notifications,Missing required step
+S049,S049-step3,required,Restart device,Missing required step
+S049,S049-step4,required,firmware update,Missing required step
+S049,S049-reset,forbidden,factory reset,Wrong policy fact
+S050,S050-step1,required,battery level,Missing required step
+S050,S050-step2,required,notifications,Missing required step
+S050,S050-step3,required,Restart device,Missing required step
+S050,S050-step4,required,firmware update,Missing required step
+S050,S050-reset,forbidden,factory reset,Wrong policy fact
+S051,S051-step1,required,circuit breaker,Missing required step
+S051,S051-step2,required,C wire,Missing required step
+S051,S051-step3,required,10 minutes,Missing required step
+S051,S051-ship,forbidden,shipping a replacement today,Unsupported promise
+S052,S052-step1,required,15 minutes,Missing required step
+S052,S052-step2,required,30 seconds,Missing required step
+S052,S052-step3,required,Check for updates,Missing required step
+S052,S052-reset,forbidden,factory reset the hub now,Wrong policy fact
+S053,S053-cancel,required,Cancel plan,Incomplete answer
+S053,S053-timing,required,end of the current billing period,Wrong policy fact
+S053,S053-refund,required,not prorate,Incomplete answer
+S053,S053-prorate,forbidden,refund the unused days,Unsupported promise
+S054,S054-cancel,required,Cancel plan,Incomplete answer
+S054,S054-timing,required,end of the current billing period,Wrong policy fact
+S054,S054-refund,required,not prorate,Incomplete answer
+S054,S054-prorate,forbidden,refund the unused days,Unsupported promise
+S055,S055-cancel,required,Cancel plan,Incomplete answer
+S055,S055-timing,required,end of the current billing period,Wrong policy fact
+S055,S055-refund,required,not prorate,Incomplete answer
+S055,S055-prorate,forbidden,refund the unused days,Unsupported promise
+S056,S056-rule,required,up to 3 months,Wrong policy fact
+S056,S056-rule6,forbidden,up to 6 months,Wrong policy fact
+S056,S056-outcome,required,within that limit,Incomplete answer
+S057,S057-rule,required,up to 3 months,Wrong policy fact
+S057,S057-rule6,forbidden,up to 6 months,Wrong policy fact
+S057,S057-outcome,required,longer than the limit,Incomplete answer
+S058,S058-rule,required,next renewal date,Wrong policy fact
+S058,S058-now,forbidden,starts today,Wrong policy fact
+S058,S058-detail,required,$89,Incomplete answer
+S059,S059-rule,required,within 14 days of the renewal charge,Wrong policy fact
+S059,S059-deny,forbidden,are not refundable,Wrong policy fact
+S059,S059-action,required,cancelled the plan,Incomplete answer
+S060,S060-rule,required,14 days,Wrong policy fact
+S060,S060-rule30,forbidden,30 days,Wrong policy fact
+S060,S060-charge,required,$8.99,Incomplete answer
+S061,S061-rule,required,free standard shipping,Wrong policy fact
+S061,S061-free,forbidden,free expedited shipping,Wrong policy fact
+S061,S061-expedited,required,$7.99,Incomplete answer
+S062,S062-check,required,end of the billing period,Wrong policy fact
+S062,S062-verify,required,charge date,Incomplete answer
+S062,S062-blame,forbidden,no cancellation on file,Wrong policy fact

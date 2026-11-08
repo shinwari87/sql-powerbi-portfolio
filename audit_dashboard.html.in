@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI answer quality audit | Nasratullah Shinwari</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#20262b;font:15px/1.55 "Segoe UI",Arial,sans-serif}
+main{max-width:1130px;padding:24px;margin:auto}.mast{background:#2d2a4a;border-radius:9px;color:#fbfaff;padding:25px 30px}h1,h2,h3,p{margin:0}h1{font:600 clamp(33px,5vw,52px)/1.05 Georgia,serif}.mast p{margin-top:9px;color:#d8d4ea}
+.tools{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:16px 0}.tools label{font-size:12px;color:#4a4f6a;font-weight:700}.tools select,.tools button{display:block;margin-top:4px;padding:8px 12px;border:1px solid #a9a7b8;border-radius:5px;background:white;color:#20262b;font:inherit}.tools button{font-size:13px;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric,section.panel{border:1px solid #dcdae3;background:#fff;border-radius:7px;padding:16px}.metric strong{display:block;font:600 31px/1.3 Georgia,serif}.metric span,small{color:#565b73;font-size:13px}h2{font:600 22px Georgia,serif}.panel{margin-top:15px}.panel small{display:block;margin:4px 0 8px}.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}td,th{padding:8px 9px;border-bottom:1px solid #e7e6ec;text-align:right;white-space:nowrap;vertical-align:top}td:first-child,th:first-child{text-align:left}th{color:#565b73;font-size:12px}td{font-size:14px}td.wrap{white-space:normal;text-align:left;min-width:260px}
+.track{display:inline-block;vertical-align:middle;width:76px;height:8px;margin-right:8px;border-radius:4px;background:#e4e2ea}.bar{display:block;height:100%;border-radius:4px;background:#5b57a0}.bar.b{background:#2f8f6a}.neg{color:#b1402d;font-weight:700}.pos{color:#237a55;font-weight:700}
+.tag{display:inline-block;padding:1px 7px;border-radius:9px;font-size:12px;font-weight:700}.Pass{background:#dff3e8;color:#1f6b4a}.Fail{background:#f9e0da;color:#9a3521}.Regressed{background:#f9e0da;color:#9a3521}.Improved{background:#dff3e8;color:#1f6b4a}.Both{background:#ebeaf2;color:#4a4f6a}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}.compare div{border:1px solid #dcdae3;border-radius:6px;padding:12px;background:#fafaf7}.compare h3{font:600 15px Georgia,serif;margin-bottom:6px}.compare p{font-size:14px}.quote{border-left:4px solid #5b57a0;padding:8px 12px;margin:8px 0;background:#f4f3f9;font-size:14px}
+button.view{padding:3px 9px;border:1px solid #a9a7b8;border-radius:4px;background:#fff;font:inherit;font-size:12px;cursor:pointer}footer{margin:16px 0 4px;color:#565b73;font-size:12px}
+@media(max-width:680px){main{padding:12px}.mast{padding:20px}.metrics,.compare{grid-template-columns:1fr 1fr}.compare{grid-template-columns:1fr}.tools{gap:7px}.metric{padding:12px}.track{display:none}}
+</style><main>
+<header class="mast"><h1>AI answer quality audit</h1><p id="subtitle"></p></header>
+<div class="tools"><label>Topic<select id="topic"><option value="">All topics</option></select></label>
+<label>Change from A to B<select id="change"><option value="">All scenarios</option><option>Regressed</option><option>Improved</option><option>Both fail</option><option>Both pass</option></select></label>
+<label>Failure type (either version)<select id="ftype"><option value="">Any</option></select></label><button type="button" id="reset">Reset filters</button></div>
+<noscript>Enable JavaScript for interactive results or open the CSV exports.</noscript>
+<div class="metrics" id="metrics" aria-live="polite"></div>
+<section class="panel"><h2>Pass rate by topic</h2><small>Pass rate = scenarios judged Pass ÷ scenarios in the topic. Net change = B passes − A passes. Regressed = A passed and B failed.</small><div class="scroll"><table><thead><tr><th>Topic</th><th>Scenarios</th><th>Version A</th><th>Version B</th><th>Improved</th><th>Regressed</th><th>Net change</th></tr></thead><tbody id="topics"></tbody></table></div></section>
+<section class="panel"><h2>Failures by type</h2><small>Counts of failed judgments in the current selection, by the reviewer's failure type.</small><div class="scroll"><table><thead><tr><th>Failure type</th><th>Version A</th><th>Version B</th></tr></thead><tbody id="types"></tbody></table></div></section>
+<section class="panel"><h2>Scenario detail</h2><small>Choose a scenario below to read the customer message, the reference answer, and both replies with their judgments.</small><div id="detail"><p><em>No scenario selected.</em></p></div></section>
+<section class="panel"><h2>Scenarios in this selection</h2><small>Regressions are listed first.</small><div class="scroll"><table><thead><tr><th>Scenario</th><th>Topic</th><th>Customer message</th><th>A</th><th>B</th><th>Change</th><th>B failure type</th><th></th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<footer>Nasratullah Shinwari · AI answer quality audit · Simulated data: the retailer, policies, customers, and both assistant versions are fictional</footer></main>
+<script id="source" type="application/json">{{PAYLOAD}}</script>
+<script>
+const source=JSON.parse(document.getElementById('source').textContent);
+const find=id=>document.getElementById(id);
+const element=(tag,value='',cls)=>{const n=document.createElement(tag);n.textContent=value;if(cls)n.className=cls;return n};
+find('subtitle').textContent=source.versions.map(v=>'Version '+v.version+' = '+v.label).join('  ·  ')+'  ·  '+source.rows.length+' simulated support scenarios';
+for(const t of [...new Set(source.rows.map(r=>r.topic))].sort())find('topic').add(new Option(t,t));
+for(const t of [...new Set(source.rows.flatMap(r=>[r.a_failure_type,r.b_failure_type]).filter(Boolean))].sort())find('ftype').add(new Option(t,t));
+for(const id of ['topic','change','ftype'])find(id).addEventListener('change',render);
+const pct=(n,d)=>d?(100*n/d).toFixed(1)+'%':'—';
+function bar(rate,cls){const track=element('span','','track');const b=element('span','','bar'+(cls?' '+cls:''));b.style.width=rate+'%';track.append(b);return track}
+function tag(v){const s=element('span',v,'tag '+v.split(' ')[0]);return s}
+function cell(tr,content,cls){const td=element('td');if(cls)td.className=cls;if(content instanceof Node)td.append(content);else td.append(...[].concat(content));tr.append(td);return td}
+function stats(rows){return{n:rows.length,a:rows.filter(r=>r.a_result==='Pass').length,b:rows.filter(r=>r.b_result==='Pass').length,imp:rows.filter(r=>r.change==='Improved').length,reg:rows.filter(r=>r.change==='Regressed').length}}
+function render(){
+ const data=source.rows.filter(r=>(!find('topic').value||r.topic===find('topic').value)&&(!find('change').value||r.change===find('change').value)&&(!find('ftype').value||r.a_failure_type===find('ftype').value||r.b_failure_type===find('ftype').value));
+ const all=stats(data);
+ const cards=[['Version A pass rate',pct(all.a,all.n)],['Version B pass rate',pct(all.b,all.n)],['Improved (A fail, B pass)',all.imp],['Regressed (A pass, B fail)',all.reg]];
+ find('metrics').replaceChildren(...cards.map(([name,v])=>{const card=element('div','','metric');card.append(element('span',name),element('strong',v));return card}));
+ const topics=[...new Set(data.map(r=>r.topic))].map(t=>({t,...stats(data.filter(r=>r.topic===t))})).sort((x,y)=>(y.b-y.a)/y.n-(x.b-x.a)/x.n||x.t.localeCompare(y.t));
+ find('topics').replaceChildren(...(topics.length?topics.map(g=>{const tr=element('tr');cell(tr,g.t);cell(tr,String(g.n));cell(tr,[bar(100*g.a/g.n),pct(g.a,g.n)]);cell(tr,[bar(100*g.b/g.n,'b'),pct(g.b,g.n)]);cell(tr,String(g.imp));cell(tr,String(g.reg));const net=g.b-g.a;cell(tr,(net>0?'+':'')+net,net<0?'neg':net>0?'pos':'');return tr}):[emptyRow(7)]));
+ const types=[...new Set(data.flatMap(r=>[r.a_failure_type,r.b_failure_type]).filter(Boolean))].sort();
+ find('types').replaceChildren(...(types.length?types.map(t=>{const tr=element('tr');cell(tr,t);cell(tr,String(data.filter(r=>r.a_result==='Fail'&&r.a_failure_type===t).length));cell(tr,String(data.filter(r=>r.b_result==='Fail'&&r.b_failure_type===t).length));return tr}):[emptyRow(3,'No failures in this selection.')]));
+ const order={Regressed:0,'Both fail':1,Improved:2,'Both pass':3};
+ const sorted=[...data].sort((x,y)=>order[x.change]-order[y.change]||x.scenario_id.localeCompare(y.scenario_id));
+ find('rows').replaceChildren(...(sorted.length?sorted.map(r=>{const tr=element('tr');cell(tr,r.scenario_id);cell(tr,r.topic);cell(tr,r.customer_message,'wrap');cell(tr,tag(r.a_result));cell(tr,tag(r.b_result));cell(tr,tag(r.change));cell(tr,r.b_failure_type||'—');const b=element('button','View','view');b.type='button';b.addEventListener('click',()=>show(r));cell(tr,b);return tr}):[emptyRow(8)]));
+}
+function emptyRow(cols,msg='No scenarios match these filters.'){const tr=element('tr');const td=element('td',msg);td.colSpan=cols;tr.append(td);return tr}
+function show(r){
+ const box=element('div');box.append(element('h3',r.scenario_id+' · '+r.topic+' · ',''));box.firstChild.append(tag(r.change));
+ box.append(element('p','Customer message:'));const q=element('div',r.customer_message,'quote');box.append(q);
+ box.append(element('p','Reference answer:'));box.append(element('div',r.expected_answer,'quote'));
+ const grid=element('div','','compare');
+ for(const [v,text,res,ft,note] of [['A',r.a_response,r.a_result,r.a_failure_type,r.a_note],['B',r.b_response,r.b_result,r.b_failure_type,r.b_note]]){
+  const d=element('div');const h=element('h3','Version '+v+' · ');h.append(tag(res));d.append(h);d.append(element('p',text));
+  if(res==='Fail'){const n=element('p','');n.append(element('strong',ft+'. '),document.createTextNode(note));n.style.marginTop='8px';d.append(n)}
+  grid.append(d)}
+ box.append(grid);find('detail').replaceChildren(box);find('detail').scrollIntoView({behavior:'smooth',block:'start'});
+}
+find('reset').addEventListener('click',()=>{for(const id of ['topic','change','ftype'])find(id).value='';render()});
+render();
+</script></html>

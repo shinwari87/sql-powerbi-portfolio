@@ -1,0 +1,7 @@
+topic,scenarios,a_passed,b_passed,a_pass_pct,b_pass_pct,improved,regressed,net_change
+Account access,9,6,7,66.7,77.8,3,2,1
+Billing and payments,10,6,8,60.0,80.0,3,1,2
+Device troubleshooting,11,4,9,36.4,81.8,5,0,5
+Refunds and returns,11,9,6,81.8,54.5,2,5,-3
+Shipping and delivery,11,7,9,63.6,81.8,3,1,2
+Subscriptions,10,7,8,70.0,80.0,3,2,1

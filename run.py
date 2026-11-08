@@ -17,6 +17,12 @@ PROJECTS = {
         ["products", "order_lines", "line_charges", "advertising"],
         {"product_month": "month, sku", "sku_ranking": "profit_rank, sku"}
     ),
+    "ai-quality-audit": (
+        ["versions", "scenarios", "rubric_checks", "responses", "judgments"],
+        {"version_pass_rate": "version", "topic_scorecard": "topic", "change_summary": "change",
+         "failure_breakdown": "topic, version, failure_type", "scenario_comparison": "scenario_id",
+         "regressions": "scenario_id"}
+    ),
 }
 
 def load(project):

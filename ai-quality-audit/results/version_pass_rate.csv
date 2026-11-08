@@ -1,0 +1,3 @@
+version,label,scenarios,passed,failed,pass_pct
+A,Assistant v3.4 (baseline),62,39,23,62.9
+B,Assistant v3.5 (candidate),62,47,15,75.8

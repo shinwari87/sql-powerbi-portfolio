@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "scorecard",
+  "position": {
+    "x": 12,
+    "y": 410,
+    "width": 1248,
+    "height": 280,
+    "z": 6,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "topic"
+                }
+              },
+              "queryRef": "Scenarios.topic",
+              "nativeQueryRef": "topic"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Scenario count"
+                }
+              },
+              "queryRef": "Scenarios.Scenario count",
+              "nativeQueryRef": "Scenario count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "A pass rate"
+                }
+              },
+              "queryRef": "Scenarios.A pass rate",
+              "nativeQueryRef": "A pass rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "B pass rate"
+                }
+              },
+              "queryRef": "Scenarios.B pass rate",
+              "nativeQueryRef": "B pass rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Improved"
+                }
+              },
+              "queryRef": "Scenarios.Improved",
+              "nativeQueryRef": "Improved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Regressed"
+                }
+              },
+              "queryRef": "Scenarios.Regressed",
+              "nativeQueryRef": "Regressed"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Net change"
+                }
+              },
+              "queryRef": "Scenarios.Net change",
+              "nativeQueryRef": "Net change"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Pass rate change"
+                }
+              },
+              "queryRef": "Scenarios.Pass rate change",
+              "nativeQueryRef": "Pass rate change"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

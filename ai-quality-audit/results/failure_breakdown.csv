@@ -1,0 +1,27 @@
+topic,version,failure_type,failures
+Account access,A,Incomplete answer,1
+Account access,A,Unsupported promise,1
+Account access,A,Wrong policy fact,1
+Account access,B,Incomplete answer,1
+Account access,B,Missing required step,1
+Billing and payments,A,Incomplete answer,1
+Billing and payments,A,Missing required step,1
+Billing and payments,A,Unsupported promise,1
+Billing and payments,A,Wrong policy fact,1
+Billing and payments,B,Incomplete answer,1
+Billing and payments,B,Missing required step,1
+Device troubleshooting,A,Missing required step,7
+Device troubleshooting,B,Missing required step,2
+Refunds and returns,A,Incomplete answer,1
+Refunds and returns,A,Wrong policy fact,1
+Refunds and returns,B,Incomplete answer,1
+Refunds and returns,B,Unsupported promise,1
+Refunds and returns,B,Wrong policy fact,3
+Shipping and delivery,A,Incomplete answer,2
+Shipping and delivery,A,Wrong policy fact,2
+Shipping and delivery,B,Incomplete answer,1
+Shipping and delivery,B,Unsupported promise,1
+Subscriptions,A,Incomplete answer,2
+Subscriptions,A,Wrong policy fact,1
+Subscriptions,B,Incomplete answer,1
+Subscriptions,B,Wrong policy fact,1

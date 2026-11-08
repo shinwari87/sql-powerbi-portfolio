@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "scenarios",
+  "position": {
+    "x": 12,
+    "y": 153,
+    "width": 1252,
+    "height": 530,
+    "z": 3,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "scenario_id"
+                }
+              },
+              "queryRef": "Scenarios.scenario_id",
+              "nativeQueryRef": "scenario_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "topic"
+                }
+              },
+              "queryRef": "Scenarios.topic",
+              "nativeQueryRef": "topic"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "change"
+                }
+              },
+              "queryRef": "Scenarios.change",
+              "nativeQueryRef": "change"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "b_failure_type"
+                }
+              },
+              "queryRef": "Scenarios.b_failure_type",
+              "nativeQueryRef": "b_failure_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "customer_message"
+                }
+              },
+              "queryRef": "Scenarios.customer_message",
+              "nativeQueryRef": "customer_message"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "a_response"
+                }
+              },
+              "queryRef": "Scenarios.a_response",
+              "nativeQueryRef": "a_response"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "b_response"
+                }
+              },
+              "queryRef": "Scenarios.b_response",
+              "nativeQueryRef": "b_response"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "b_note"
+                }
+              },
+              "queryRef": "Scenarios.b_note",
+              "nativeQueryRef": "b_note"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

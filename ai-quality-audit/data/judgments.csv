@@ -1,0 +1,125 @@
+scenario_id,version,result,failure_type,reviewer_note
+S001,A,Pass,,
+S001,B,Fail,Wrong policy fact,"Contains prohibited claim: ""within 14 days of delivery""."
+S002,A,Pass,,
+S002,B,Pass,,
+S003,A,Pass,,
+S003,B,Pass,,
+S004,A,Pass,,
+S004,B,Pass,,
+S005,A,Pass,,
+S005,B,Pass,,
+S006,A,Fail,Wrong policy fact,"Contains prohibited claim: ""30 days from delivery""."
+S006,B,Pass,,
+S007,A,Pass,,
+S007,B,Fail,Wrong policy fact,"Contains prohibited claim: ""30 days from delivery""."
+S008,A,Fail,Incomplete answer,"Missing required element: ""replacement or a full refund""."
+S008,B,Pass,,
+S009,A,Pass,,
+S009,B,Fail,Unsupported promise,"Contains prohibited claim: ""we can process a refund""."
+S010,A,Pass,,
+S010,B,Fail,Incomplete answer,"Missing required element: ""faulty""."
+S011,A,Pass,,
+S011,B,Fail,Wrong policy fact,"Contains prohibited claim: ""within 30 days of purchase""."
+S012,A,Pass,,
+S012,B,Pass,,
+S013,A,Fail,Wrong policy fact,"Contains prohibited claim: ""ships free""."
+S013,B,Pass,,
+S014,A,Pass,,
+S014,B,Pass,,
+S015,A,Pass,,
+S015,B,Pass,,
+S016,A,Pass,,
+S016,B,Pass,,
+S017,A,Pass,,
+S017,B,Pass,,
+S018,A,Fail,Incomplete answer,"Missing required element: ""reshipment or a full refund""."
+S018,B,Fail,Incomplete answer,"Missing required element: ""reshipment or a full refund""."
+S019,A,Fail,Incomplete answer,"Missing required element: ""corrected address""."
+S019,B,Pass,,
+S020,A,Pass,,
+S020,B,Pass,,
+S021,A,Pass,,
+S021,B,Fail,Unsupported promise,"Contains prohibited claim: ""ship to Canada""."
+S022,A,Fail,Wrong policy fact,"Missing required element: ""2 business days""."
+S022,B,Pass,,
+S023,A,Pass,,
+S023,B,Pass,,
+S024,A,Pass,,
+S024,B,Fail,Incomplete answer,"Missing required element: ""authorization hold""."
+S025,A,Pass,,
+S025,B,Pass,,
+S026,A,Pass,,
+S026,B,Pass,,
+S027,A,Pass,,
+S027,B,Pass,,
+S028,A,Fail,Incomplete answer,"Missing required element: ""past the window""."
+S028,B,Pass,,
+S029,A,Fail,Unsupported promise,"Contains prohibited claim: ""I've applied WELCOME10""."
+S029,B,Pass,,
+S030,A,Fail,Missing required step,"Missing required element: ""billing address""."
+S030,B,Fail,Missing required step,"Missing required element: ""billing address""."
+S031,A,Pass,,
+S031,B,Pass,,
+S032,A,Fail,Wrong policy fact,"Contains prohibited claim: ""based on your billing address""."
+S032,B,Pass,,
+S033,A,Pass,,
+S033,B,Fail,Incomplete answer,"Missing required element: ""Request a new link""."
+S034,A,Fail,Wrong policy fact,"Contains prohibited claim: ""24 hours""."
+S034,B,Pass,,
+S035,A,Pass,,
+S035,B,Pass,,
+S036,A,Pass,,
+S036,B,Pass,,
+S037,A,Pass,,
+S037,B,Fail,Missing required step,"Contains prohibited claim: ""I've changed the email""."
+S038,A,Fail,Incomplete answer,"Missing required element: ""confirmation link""."
+S038,B,Pass,,
+S039,A,Fail,Unsupported promise,"Contains prohibited claim: ""I've turned off two-factor""."
+S039,B,Pass,,
+S040,A,Pass,,
+S040,B,Pass,,
+S041,A,Pass,,
+S041,B,Pass,,
+S042,A,Fail,Missing required step,"Missing required element: ""firmware update""."
+S042,B,Pass,,
+S043,A,Pass,,
+S043,B,Pass,,
+S044,A,Fail,Missing required step,"Missing required element: ""30 seconds""."
+S044,B,Pass,,
+S045,A,Pass,,
+S045,B,Pass,,
+S046,A,Fail,Missing required step,"Missing required element: ""30 seconds""."
+S046,B,Fail,Missing required step,"Missing required element: ""Forget device""."
+S047,A,Pass,,
+S047,B,Pass,,
+S048,A,Fail,Missing required step,"Missing required element: ""battery level""."
+S048,B,Pass,,
+S049,A,Fail,Missing required step,"Missing required element: ""firmware update""."
+S049,B,Fail,Missing required step,"Missing required element: ""notifications""."
+S050,A,Fail,Missing required step,"Missing required element: ""battery level""."
+S050,B,Pass,,
+S051,A,Pass,,
+S051,B,Pass,,
+S052,A,Fail,Missing required step,"Missing required element: ""15 minutes""."
+S052,B,Pass,,
+S053,A,Pass,,
+S053,B,Fail,Incomplete answer,"Missing required element: ""not prorate""."
+S054,A,Pass,,
+S054,B,Pass,,
+S055,A,Pass,,
+S055,B,Pass,,
+S056,A,Pass,,
+S056,B,Fail,Wrong policy fact,"Contains prohibited claim: ""up to 6 months""."
+S057,A,Pass,,
+S057,B,Pass,,
+S058,A,Fail,Incomplete answer,"Missing required element: ""$89""."
+S058,B,Pass,,
+S059,A,Pass,,
+S059,B,Pass,,
+S060,A,Fail,Incomplete answer,"Missing required element: ""$8.99""."
+S060,B,Pass,,
+S061,A,Fail,Wrong policy fact,"Contains prohibited claim: ""free expedited shipping""."
+S061,B,Pass,,
+S062,A,Pass,,
+S062,B,Pass,,

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "kpi3",
+  "position": {
+    "x": 957,
+    "y": 14,
+    "width": 306,
+    "height": 116,
+    "z": 3,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "Regressed"
+                }
+              },
+              "queryRef": "Scenarios.Regressed",
+              "nativeQueryRef": "Regressed"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

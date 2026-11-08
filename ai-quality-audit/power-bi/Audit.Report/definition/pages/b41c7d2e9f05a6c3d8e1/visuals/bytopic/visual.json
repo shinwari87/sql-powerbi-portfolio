@@ -1,0 +1,69 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "bytopic",
+  "position": {
+    "x": 250,
+    "y": 150,
+    "width": 1010,
+    "height": 240,
+    "z": 5,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "topic"
+                }
+              },
+              "queryRef": "Scenarios.topic",
+              "nativeQueryRef": "topic"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "A pass rate"
+                }
+              },
+              "queryRef": "Scenarios.A pass rate",
+              "nativeQueryRef": "A pass rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenarios"
+                    }
+                  },
+                  "Property": "B pass rate"
+                }
+              },
+              "queryRef": "Scenarios.B pass rate",
+              "nativeQueryRef": "B pass rate"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
